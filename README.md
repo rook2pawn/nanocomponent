@@ -307,6 +307,14 @@ but you can do something similar with `arguments` (perhaps passing a single `pro
 to `.render` e.g. `.render({ foo, bar })` and assigning internal state to `this` however
 you want (perhaps `this.state = { fizz: buzz }`).
 
+### How do I use nanocomponent with my choo state?
+
+Suppose we are using the `Button` nanocomponent. In our view function we write `.render(state.button)`
+and elswhere when we modify state, say, `state.button.color = 'yellow'` and `state.button.text = "hello"`
+and whenever we `emit('render')`, our view function will render the `state.button`. In other words,
+if your nanocomponent is called `Foo`, then simply by having `.render(state.foo)` ensures you have one place
+`state.foo` to nest all your changes that pertain to that component.
+
 ## API
 
 ### `component = Nanocomponent([name])`
